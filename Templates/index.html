@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello Django</title>
+</head>
+<body bgcolor="#F6A1FF">
+    <div id="header" >
+        <h5 align="right"><a href="/accounts/login/">Выйти из аккаунта</a></h5>
+        <h1 align="center">Главная страница<h1>
+    </div>
+    <h3 align="center"><a href = "{% url 'Client' %}">Клиенты</a></h3>
+    <h3 align="center"><a href = "{% url 'Employee_category' %}">Категории сотрудников</a></h3>
+    <h3 align="center"><a href = "{% url 'Collective_contract' %}">Коллективный контракт</a></h3>
+    <h3 align="center"><a href = "{% url 'Company' %}">Компании</a></h3>
+    <h3 align="center"><a href = "{% url 'Agent' %}">Агенты</a></h3>
+    <h3 align="center"><a href = "{% url 'Users' %}">Пользователи</a></h3>
+</body>
+</html>

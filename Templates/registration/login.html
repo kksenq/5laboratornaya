@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+
+</head>
+<body bgcolor="#7DC1F3">
+
+<div id="header">
+        <h1 align="center">Добро пожаловать на сайт страховой компании<h1>
+        <h3 align="center">Для продолжения работы пройдите авторизацию<h3>
+</div>
+
+<p align="right"><button class = 'button' onclick="window.location.href = 'http://127.0.0.1:8000/admin/';">Для администратора..</button></p>
+<p align="right"><button class = 'button' onclick="window.location.href = 'http://127.0.0.1:8000/admin/backups/backup-database-and-media/';">Резервное копирование..</button></p>
+<br>
+
+  <form method="post" action="{% url 'login' %}" align="center">
+    {% csrf_token %}
+    <table align="center">
+      <tr>
+        <td> {{ form.username.label_tag }} </td>
+        <td> {{ form.username }} </td>
+      </tr>
+      <tr>
+        <td> {{ form.password.label_tag }} </td>
+        <td> {{ form.password }} </td>
+      </tr>
+    </table>
+    <input class = 'button' type="submit" name="login" value="login" />
+    <input class = 'myfield' type="hidden" name="next" value="{{ next }}" />
+  </form>
+</body>
+
+</html>

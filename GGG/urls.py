@@ -50,6 +50,12 @@ urlpatterns = [
     path('home/Users/del/', views.view_Users.del_Users, name='del_Users'),
     path('home/Users/update/', views.view_Users.update_Users, name='update_Users'),
 
+    # добавление пользователя
+    path('home/Backup_copy/', views.index_Backup_copy, name='Backup_copy'),
+    path('home/Backup_copy/add/', views.view_Backup_copy.add_Backup_copy, name='add_Backup_copy'),
+    path('home/Backup_copy/del/', views.view_Backup_copy.del_Backup_copy, name='del_Backup_copy'),
+    path('home/Backup_copy/update/', views.view_Backup_copy.update_Backup_copy, name='update_Backup_copy'),
+
 ]
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),

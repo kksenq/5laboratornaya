@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Client, Collective_contract, Employee_category, Collective_contract, Company, Agent, Users
+from .models import Client, Collective_contract, Employee_category, Collective_contract, Company, Agent, Users, Backup_copy
 # Register your models here.
 
 @admin.register(Collective_contract)
@@ -12,7 +12,7 @@ class ClientAdmin(admin.ModelAdmin):
 
 @admin.register(Employee_category)
 class Employee_categoryAdmin(admin.ModelAdmin):
-    list_display = ('number','employee_full_name','employee_risk_category')
+    list_display = ('number','employee_full_name','employee_risk_category', 'agent_id')
 
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
@@ -25,4 +25,8 @@ class AgentAdmin(admin.ModelAdmin):
 
 @admin.register(Users)
 class UsersAdmin(admin.ModelAdmin):
+    list_display = ('name','login', 'password')
+
+@admin.register(Backup_copy)
+class Backup_copyAdmin(admin.ModelAdmin):
     list_display = ('name','number')

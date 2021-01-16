@@ -7,15 +7,15 @@
 <body class="container"  bgcolor="#F6A1FF">
     <div id="header" >
         <h5 align="right"><a href="/accounts/login/">Выйти из аккаунта</a></h5>
-        <h1 align="center">Категория сотрудника<h1>
+        <h1 align="center">Резервные копии<h1>
         <h3 align="center"><a href = "{% url 'home' %}">назад</a></h3>
     </div>
     <table border="1" width="100%">
 
         <tr>
-            <th> Добавление сотрудника </th>
-            <th> Удаление сотрудника </th>
-            <th> Изменение сотрудника </th>
+            <th> Добавление копии </th>
+            <th> Удаление копии </th>
+            <th> Изменение копии </th>
         </tr>
     <tr>
         <th align="center">
@@ -25,7 +25,7 @@
                 {{ form }}
             </table>
                 <br>
-            <input type="submit" value="Добавить сотрудника">
+            <input type="submit" value="Добавить копию">
             </form>
         </th>
         <th align="center">
@@ -34,7 +34,7 @@
             <label>Введите id</label>
             <input type= "number" name="del_int"><br>
             <br>
-            <input type= "submit" value="Удалить сотрудника">
+            <input type= "submit" value="Удалить копию">
             </form>
         </th>
         <th align="center">
@@ -47,7 +47,7 @@
                 {{ form }}
             </table>
             <br>
-            <input type= "submit" value="Изменить сотрудника">
+            <input type= "submit" value="Изменить копию">
             </form>
         </th>
     </tr>
@@ -60,17 +60,13 @@
             <tr align="center" bgcolor="grey">
                 <th>Id</th>
                 <th>Номер</th>
-                <th>Имя сотрудника</th>
-                <th>Категория риска сотрудника</th>
-                <th>Агент</th>
+                <th>Имя</th>
             </tr>
         {% for i in data %}
             <tr align="center">
                 <td>{{ i.id }}</td>
                 <td>{{ i.number }}</td>
-                <td>{{ i.employee_full_name }}</td>
-                <td>{{ i.employee_risk_category}}</td>
-                <td>{{ i.agent_id}}</td>
+                <td>{{ i.name }}</td>
             </tr>
         {% endfor %}
         </table>

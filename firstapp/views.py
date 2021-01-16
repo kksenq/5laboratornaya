@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponseRedirect, HttpResponse
-from .models import Client, Collective_contract, Employee_category, Collective_contract, Company, Agent, Users
-from .forms import DataClient, Collective_contract, DataEmployee_category, DataCollective_contract, DataCompany, DataAgent, DataUsers
+from .models import Client, Collective_contract, Employee_category, Collective_contract, Company, Agent, Users, Backup_copy
+from .forms import DataClient, Collective_contract, DataEmployee_category, DataCollective_contract, DataCompany, DataAgent, DataUsers, DataBackup_copy
 
 # Create your views here.
 
@@ -62,6 +62,7 @@ class view_Employee_category(View):
             add_data.number = request.POST.get('number')
             add_data.employee_full_name = request.POST.get('employee_full_name')
             add_data.employee_risk_category = request.POST.get('employee_risk_category')
+            add_data.agent_id = Agent.objects.get(id=request.POST.get("agent_id"))
             add_data.save()
             return HttpResponseRedirect("/home/Employee_category")
 
@@ -79,6 +80,7 @@ class view_Employee_category(View):
             update_data.number = request.POST.get('number')
             update_data.employee_full_name = request.POST.get('employee_full_name')
             update_data.employee_risk_category = request.POST.get('employee_risk_category')
+            add_data.agent_id = Agent.objects.get(id=request.POST.get("agent_id"))
             update_data.save()
             return HttpResponseRedirect("/home/Employee_category")
 
@@ -207,8 +209,9 @@ class view_Users(View):
     def add_Users(request):
         if request.method == "POST":
             add_data = Users()
-            add_data.number = request.POST.get('number')
             add_data.name = request.POST.get('name')
+            add_data.login = request.POST.get('login')
+            add_data.password = request.POST.get('password')
             add_data.save()
             return HttpResponseRedirect("/home/Users")
 
@@ -223,13 +226,43 @@ class view_Users(View):
         if request.method == "POST":
             update_int = request.POST.get("update_int", "")
             update_data = Users.objects.get(id=update_int)
-            update_data.number = request.POST.get('number')
             update_data.name = request.POST.get('name')
+            update_data.login = request.POST.get('login')
+            update_data.password = request.POST.get('password')
             update_data.save()
             return HttpResponseRedirect("/home/Users")
 
 
+def index_Backup_copy(request):
+    index_form = DataBackup_copy()
+    index_data = Users.objects.all()
+    return render(request, "Firstapp/Backup_copy.html", {"form": index_form, "data": index_data})
 
+
+class view_Backup_copy(View):
+    def add_Backup_copy(request):
+        if request.method == "POST":
+            add_data = Backup_copy()
+            add_data.number = request.POST.get('number')
+            add_data.name = request.POST.get('name')
+            add_data.save()
+            return HttpResponseRedirect("/home/Backup_copy")
+
+    def del_Backup_copy(request):
+        if request.method == "POST":
+            del_int = request.POST.get("del_int", "")
+            del_data = Backup_copy.objects.get(id=del_int)
+            del_data.delete()
+            return HttpResponseRedirect("/home/Backup_copy")
+
+    def update_Backup_copy(request):
+        if request.method == "POST":
+            update_int = request.POST.get("update_int", "")
+            update_data = Backup_copy.objects.get(id=update_int)
+            update_data.number = request.POST.get('number')
+            update_data.name = request.POST.get('name')
+            update_data.save()
+            return HttpResponseRedirect("/home/Backup_copy")
 
 
 

@@ -20,6 +20,7 @@ class Employee_category(models.Model):
     number = models.IntegerField()
     employee_full_name = models.CharField(max_length=120)
     employee_risk_category = models.CharField(max_length=120)
+    agent_id = models.ForeignKey('Agent', on_delete=models.CASCADE)
     objects = models.Manager()
 
 class Company(models.Model):
@@ -39,6 +40,12 @@ class Agent(models.Model):
     objects = models.Manager()
 
 class Users(models.Model):
+    name = models.CharField(max_length=120)
+    login = models.CharField(max_length=120)
+    password = models.CharField(max_length=120)
+    objects = models.Manager()
+
+class Backup_copy(models.Model):
     name = models.CharField(max_length=120)
     number = models.CharField(max_length=120)
     objects = models.Manager()

@@ -19,6 +19,7 @@ class DataEmployee_category(forms.Form):
     number = forms.IntegerField(label="Номер")
     employee_full_name = forms.CharField(label="Имя сотрудника")
     employee_risk_category = forms.CharField(label="Категория риска сотрудника")
+    agent_id = forms.ModelChoiceField(label="Агент", queryset=Agent.objects.all().order_by('id'))
 
 class DataCompany(forms.Form):
     code = forms.IntegerField(label="Код")
@@ -35,6 +36,11 @@ class DataAgent(forms.Form):
     collective_contract_id = forms.ModelChoiceField(label="Коллективный контракт", queryset=Collective_contract.objects.all().order_by('id'))
 
 class DataUsers(forms.Form):
+    name = forms.CharField(label="Имя пользователя")
+    login = forms.CharField(label="Логин")
+    password = forms.CharField(label="Пароль")
+
+class DataBackup_copy(forms.Form):
     number = forms.CharField(label="Номер")
     name = forms.CharField(label="Имя пользователя")
 
